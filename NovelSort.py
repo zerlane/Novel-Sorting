@@ -42,10 +42,10 @@ novelSortFile.close()
 
 
 #lexicographical sort
-def alphabetize(arr):
-    for i in range (0, len(arr)):
-        for j in range(0, len(arr)):
-            if(arr[j] > arr[i]):
+def alphabetize(arr): #O(n^2)
+    for i in range (0, len(arr)): #n times
+        for j in range(0, len(arr)): #n times
+            if(arr[j] > arr[i]): #constant time
                 temp = arr[i];
                 arr[i] = arr[j];
                 arr[j] = temp;
