@@ -1,3 +1,5 @@
+import time
+
 def novelSort(arr, left, right):
     if left < right: #base case
 
@@ -8,7 +10,7 @@ def novelSort(arr, left, right):
         arr[left], arr[minIndex] = arr[minIndex], arr[left]
         arr[right], arr[maxIndex] = arr[maxIndex], arr[right]
 
-        novelSort(arr, left + 1, right - 1)
+        novelSort(arr, left + 1, right - 1) #takes two from the array
     return arr
 
 def findMinMax(arr, left, right):
@@ -23,22 +25,23 @@ def findMinMax(arr, left, right):
 
     return minIndex, maxIndex
 
-# arr = [8, 5, 2, 13, 11]
-# print(novelSort(arr, 0, len(arr) - 1))
+arr = [8, 5, 2, 13, 11, 43, 36, 24]
 
+print("Array before novel sort algorithm: ")
+print(arr)
+print("Novel sorting:")
+print(novelSort(arr, 0, len(arr) - 1))
+
+print("")
 
 #read in file
 novelSortFile = open("/Users/zerlane/Documents/UAB Summer22/CS303/Labs/Lab5/NovelSortInput.txt", "r")
-
 inElements = novelSortFile.read()
-
 elementsIntoList = inElements.split("\n\n")
-
 novelSortFile.close()
-print(elementsIntoList)
-# convert string to time (https://www.educative.io/answers/how-to-convert-a-string-to-a-date-in-python)
 
-#sort method to sort list alphabettically
+
+#lexicographical sort
 def alphabetize(arr):
     for i in range (0, len(arr)):
         for j in range(0, len(arr)):
@@ -48,9 +51,11 @@ def alphabetize(arr):
                 arr[j] = temp;
     return arr
 
-print(alphabetize(elementsIntoList))
+print("Alphabetized:")
+start = time.time()
+alphabetize(elementsIntoList)
+end = time.time()
 
-#bucket sort
-
-def bucketSort (arr, n):
-    return arr
+print(f"Execution time: {end - start}")
+for i in range(len(elementsIntoList)):
+    print(elementsIntoList[i])
